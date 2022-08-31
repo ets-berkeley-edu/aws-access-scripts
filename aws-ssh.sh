@@ -48,7 +48,7 @@ while getopts ":i:u:n:r:k:t:lf" opts; do
        echo "  -u Specify user to login as, typical values are ubuntu or ec2-user" >&2
        echo "  -r Specify region, defaults to us-west-2" >&2
        echo "" >&2
-       echo "If you only specify -i or -n, the script will attempt to open a shell via the session manager."
+       echo "If you only specify -i or -n, the script will attempt to open a shell via the session manager." >&2
        echo "" >&2
        exit 1
   esac
