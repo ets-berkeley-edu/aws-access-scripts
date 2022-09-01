@@ -91,7 +91,7 @@ if [ ${aws_sftp} == "true" ]; then
     echo "You must specify a user with -u if you wish to sftp!" >&2
     exit 1
   else
-    sftp -oProxyCommand="aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'" -oIdentityFile=${private_key} ${aws_user}@${instance_id}
+    sftp -oProxyCommand="aws ssm start-session --region ${region} --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'" -oIdentityFile=${private_key} ${aws_user}@${instance_id}
   fi
 # Tunnel was chosen, check to make sure -k and -u were specified and attempt it
 elif [ ! -z ${tunnel} ]; then
@@ -102,7 +102,7 @@ elif [ ! -z ${tunnel} ]; then
     echo "You must specify a user with -u if you wish to tunnel!" >&2
     exit 1
   else
-    ssh -o ProxyCommand="aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'" -i ${private_key} ${aws_user}@${instance_id} -L ${tunnel}
+    ssh -o ProxyCommand="aws ssm start-session --region ${region} --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'" -i ${private_key} ${aws_user}@${instance_id} -L ${tunnel}
   fi
 # Otherwise try to open a shell    
 else
@@ -111,6 +111,6 @@ else
     aws ssm start-session --region ${region} --target ${instance_id}
   # Otherwise attempt ssh
   else
-    ssh -o ProxyCommand="aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'" -i ${private_key} ${aws_user}@${instance_id}
+    ssh -o ProxyCommand="aws ssm start-session --region ${region} --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'" -i ${private_key} ${aws_user}@${instance_id}
   fi
 fi
