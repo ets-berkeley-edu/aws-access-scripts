@@ -14,7 +14,7 @@ Otherwise refer to the official installation docs:  https://docs.aws.amazon.com/
  If you use homebrew:  `brew install session-manager-plugin`
  Otherwise refer to the official installation docs: https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html#install-plugin-macos
  4. Export your AWS credentials to your local shell environment:  https://ucberkeley.awsapps.com/start
- 5. If you plan to use tunneling or sftp, you will need the appropriate ssh private key and know which user you're wish to connect as.  This can typically be found in LastPass.  Contact operations if you need assistance.
+ 5. If you plan to use tunneling or sftp, you will need the appropriate ssh private key and know which user you wish to connect as.  This can typically be found in LastPass.  Contact operations if you need assistance.
 
 ## Usage
 Once you've met the installation dependencies for the script you can use it to list ec2 instances, open a shell, transfer files via sftp, or tunnel via ssh.
