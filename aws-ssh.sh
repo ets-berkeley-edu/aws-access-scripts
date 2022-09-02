@@ -114,3 +114,5 @@ else
     ssh -o ProxyCommand="aws ssm start-session --region ${region} --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'" -i ${private_key} ${aws_user}@${instance_id}
   fi
 fi
+
+exit 0
